@@ -44,9 +44,8 @@ class Funcionario(Base):
 #Criando tabela de dados, no banco de dados:
 Base.metadata.create_all(bind=BD)
 
-while True:
-    while True:
-        print("""   === RH System ===
+def menu_principal ():
+    print("""   === RH System ===
         1 - Adicionar um funcionário
         2 - Consultar um funcionário
         3 - Atualizar os dados de um funcionário
@@ -54,12 +53,27 @@ while True:
         5 - Listar todos os funcionários
         0 - Sair do sistema.
         """)
+
+def limpar_tela():
+    system("cls||clear")
+    sleep(2)
+
+def logo_empresa():
+    print("="*20)
+    print(f"{"SENAI":^20}")
+    print("="*20)
+
+while True:
+    while True:
+        menu_principal()
         opcao = int(input(": "))
         if opcao == 1 or 2 or 3 or 4 or 5 or 0:
             break
     match (opcao):
         case 1:
             while True:
+                limpar_tela()
+                logo_empresa()
                 funcionario = Funcionario(
                     nome = input("Insira o nome: "),
                     sobre = input("Insira o sobrenome: "),
@@ -67,9 +81,9 @@ while True:
                     cpf = input("Insira o CPF: "),
                     setor = input("Insira o setor: "),
                     funcao = input("Insira a função: "),
-                    salario = float("Insira o salário: "),
+                    salario = float(input("Insira o salário: ")),
                     telefone = input("Insira o telefone: "),
-                    sexo = ("Insira o sexo (M/F ): ")
+                    sexo = input("Insira o sexo (M/F ): ")
                 )
                 session.add(funcionario)
                 session.commit
@@ -77,8 +91,14 @@ while True:
                 if opcao1 == 2:
                     break
         case 2:
-            
-        case 3:
-        case 4:
-        case 5:
-        case 0:
+            cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
+            funcionario = session.query(Funcionario).filter_by(funcionario.cpf == cpf_funcionario).first()
+            print(f"Nome: {funcionario.nome}")
+            print(f"Nome: {funcionario.sobrenome}")
+            print(f"Nome: {funcionario.idade}")
+            print(f"Nome: {funcionario.cpf}")
+            print(f"Nome: {funcionario.setor}")
+            print(f"Nome: {funcionario.funcao}")
+            print(f"Nome: {funcionario.salario}")
+            print(f"Nome: {funcionario.telefone}")
+            print(f"Nome: {funcionario.sexo}")
