@@ -64,6 +64,7 @@ def logo_empresa():
     print("="*20)
 
 def listar_todos_funcionarios(a):
+    limpar_tela()
     for funcionario in a:
         print(f"\n{funcionario.nome, funcionario.sobrenome} - {funcionario.idade} - {funcionario.cpf}")
         print(f"{funcionario.setor} - {funcionario.funcao} - {funcionario.salario} - {funcionario.telefone} - {funcionario.sexo}")
