@@ -6,7 +6,7 @@ system("cls||clear")
 
 dados = []
 #Criando Banco de dados:
-BD = create_engine("sqlite:///bancodedados.db")
+BD = create_engine("sqlite:///EmpresaSenaibancodedados.db")
 
 #Conectando ao banco de dados:
 Session = sessionmaker(bind=BD)
@@ -15,29 +15,33 @@ session = Session()
 #Criando Tabela e Classe:
 Base = declarative_base()
 
-class Pessoa(Base):
-    __tablename__ = "usuarios"
+class Funcionario(Base):
+    __tablename__ = "funcionarios"
     
     #Definindo variaveis da tabela:
-    i = Column("id", Integer, primary_key=True, autoincrement=True)
-    nome = Column("Nome", String)
-    sobrenome = Column("Sobrenome", String)
-    idade = Column("Idade", Integer)
-    peso = Column("Peso", Float)
-    altura = Column("Altura", Float)
-    sexo = Column("Sexo", String)
-    #Duvida: Como fazer para declarar sub classes. 
-    #Ex: Professor > Alunos > Pais
-    #E como fazer para acessar elas através da classe principal "Professor"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String)
+    sobrenome = Column(String)
+    idade = Column(Integer)
+    cpf = Column(String)
+    setor = Column(String)
+    funcao = Column(String)
+    salario = Column(Float)
+    telefone = Column(String)
+    sexo = Column(String)
 
     #Definindo atributos da classe:
-    def __init__(self,nome:str, sobrenome:str, idade:int,peso:float,altura:float,sexo:str):
+    def __init__(self,nome:str, sobrenome:str,idade:int, cpf:str, setor:str,funcao:str,salario:str,telefone:str,sexo:str):
         self.nome = nome
         self.sobrenome=sobrenome
-        self.idade=idade
-        self.peso=peso
-        self.altura=altura
-        self.sexo=sexo                                                                                                                                    
+        self.idadade = idade                                                                                            
+        self.cpf = cpf
+        self.setor = setor
+        self.funcao = funcao
+        self.salario = salario
+        self.telefone = telefone
+        self.sexo = sexo                                     
 
 #Criando tabela de dados, no banco de dados:
-Base.metadata.create_all(bind=BD)    
+Base.metadata.create_all(bind=BD)
+    
