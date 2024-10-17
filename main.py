@@ -100,15 +100,14 @@ while True:
         case 2:
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
             pesquisar_funcionario = session.query(Funcionario).filter_by(funcionario.cpf == cpf_funcionario).first()
-            print(f"Nome: {funcionario.nome}")
-            print(f"Nome: {funcionario.sobrenome}")
-            print(f"Nome: {funcionario.idade}")
-            print(f"Nome: {funcionario.cpf}")
-            print(f"Nome: {funcionario.setor}")
-            print(f"Nome: {funcionario.funcao}")
-            print(f"Nome: {funcionario.salario}")
-            print(f"Nome: {funcionario.telefone}")
-            print(f"Nome: {funcionario.sexo}")
+            print(f"Nome e sobrenome: {funcionario.nome, funcionario.sobrenome}")
+            print(f"Idade: {funcionario.idade}")
+            print(f"CPF: {funcionario.cpf}")
+            print(f"Setor: {funcionario.setor}")
+            print(f"Função: {funcionario.funcao}")
+            print(f"Salário: {funcionario.salario}")
+            print(f"Telefone: {funcionario.telefone}")
+            print(f"Sexo: {funcionario.sexo}")
         case 3:
             pass
         case 4:
