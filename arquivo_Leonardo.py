@@ -22,7 +22,7 @@ class Funcionario(Base):
     nome = Column(String)
     sobrenome = Column(String)
     idade = Column(Integer)
-    cpf = Column(String)
+    cpf = Column(String, primary_key=True)
     setor = Column(String)
     funcao = Column(String)
     salario = Column(Float)
@@ -76,14 +76,14 @@ while True:
                 logo_empresa()
                 funcionario = Funcionario(
                     nome = input("Insira o nome: "),
-                    sobre = input("Insira o sobrenome: "),
+                    sobrenome = input("Insira o sobrenome: "),
                     idade = int(input("Insira a idade: ")),
                     cpf = input("Insira o CPF: "),
                     setor = input("Insira o setor: "),
                     funcao = input("Insira a função: "),
-                    salario = float("Insira o salário: "),
+                    salario = float(input("Insira o salário: ")),
                     telefone = input("Insira o telefone: "),
-                    sexo = ("Insira o sexo (M/F ): ")
+                    sexo = input("Insira o sexo (M/F ): ")
                 )
                 session.add(funcionario)
                 session.commit
@@ -92,12 +92,7 @@ while True:
                     break
         case 2:
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
-            funcionario = session.query(Funcionario).filter(funcionario.cpf == cpf_funcionario).first()
+            func = session.query(Funcionario).filter(funcionario.cpf == cpf_funcionario).first()
             print(f"Nome: {funcionario.nome} {funcionario.sobrenome}")
-            
 
-        case 3:
-        case 4:
-        case 5:
-        case 0:
     
