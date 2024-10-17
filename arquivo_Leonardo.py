@@ -124,6 +124,8 @@ while True:
             print(f"Salario: {salario}")
             print(f"Telefone: {telefone}")
             print(f"Sexo: {sexo}")
+        case 3:
+            print("leo")
             
             
 
