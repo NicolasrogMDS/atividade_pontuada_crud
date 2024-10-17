@@ -33,7 +33,7 @@ class Funcionario(Base):
     def __init__(self,nome:str, sobrenome:str,idade:int, cpf:str, setor:str,funcao:str,salario:float,telefone:str,sexo:str):
         self.nome = nome
         self.sobrenome=sobrenome
-        self.idadade = idade                                                                                            
+        self.idade = idade                                                                                            
         self.cpf = cpf
         self.setor = setor
         self.funcao = funcao
@@ -79,6 +79,23 @@ def add_funcionario():
     session.commit
     return funcionario
 
+def pesquisa_funcionario(usuario_id):
+    funcionario = session.query(Funcionario).filter(Funcionario.cpf == usuario_id).first()
+    funcionario.nome
+    funcionario.sobrenome
+    funcionario.idade
+    funcionario.cpf
+    funcionario.setor
+    funcionario.funcao
+    funcionario.salario
+    funcionario.telefone
+    funcionario.sexo
+    return funcionario.nome,funcionario.sobrenome,funcionario.idade,funcionario.cpf,funcionario.setor,funcionario.funcao,funcionario.salario,funcionario.telefone,funcionario.sexo
+
+
+
+
+
 while True:
     while True:
         menu_principal()
@@ -90,7 +107,7 @@ while True:
             while True:
                 limpar_tela()
                 logo_empresa()
-                funcionario = add_funcionario()
+                add_funcionario()
                 opcao1 = int(input("Deseja adicionar outro funcionario ? \n1- Sim\n2- Não"))
                 if opcao1 == 2:
                     break
@@ -98,6 +115,15 @@ while True:
             limpar_tela()
             logo_empresa()
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
+            nome, sobrenome, idade, cpf, setor, funcao, salario, telefone, sexo = pesquisa_funcionario(cpf_funcionario)
+            print(f"Nome: {nome} {sobrenome}")
+            print(f"Idade: {idade}")
+            print(f"CPF: {cpf}")
+            print(f"Setor: {setor}")
+            print(f"Função: {funcao}")
+            print(f"Salario: {salario}")
+            print(f"Telefone: {telefone}")
+            print(f"Sexo: {sexo}")
             
             
 
