@@ -63,9 +63,19 @@ def logo_empresa():
     print(f"{"SENAI":^20}")
     print("="*20)
 
-def pesquisar_funcionario():
-    func = session.query(Funcionario).filter(funcionario.cpf == cpf_funcionario).first()
-    print(f"Nome: {funcionario.nome} {funcionario.sobrenome}")
+def add_funcionario():
+    funcionario = Funcionario(
+                    nome = input("Insira o nome: "),
+                    sobrenome = input("Insira o sobrenome: "),
+                    idade = int(input("Insira a idade: ")),
+                    cpf = input("Insira o CPF: "),
+                    setor = input("Insira o setor: "),
+                    funcao = input("Insira a função: "),
+                    salario = float(input("Insira o salário: ")),
+                    telefone = input("Insira o telefone: "),
+                    sexo = input("Insira o sexo (M/F ): ")
+                )
+    return funcionario
 
 while True:
     while True:
@@ -78,25 +88,18 @@ while True:
             while True:
                 limpar_tela()
                 logo_empresa()
-                funcionario = Funcionario(
-                    nome = input("Insira o nome: "),
-                    sobrenome = input("Insira o sobrenome: "),
-                    idade = int(input("Insira a idade: ")),
-                    cpf = input("Insira o CPF: "),
-                    setor = input("Insira o setor: "),
-                    funcao = input("Insira a função: "),
-                    salario = float(input("Insira o salário: ")),
-                    telefone = input("Insira o telefone: "),
-                    sexo = input("Insira o sexo (M/F ): ")
-                )
+                funcionario = add_funcionario()
                 session.add(funcionario)
                 session.commit
                 opcao1 = int(input("Deseja adicionar outro funcionario ? \n1- Sim\n2- Não"))
                 if opcao1 == 2:
                     break
         case 2:
+            limpar_tela()
+            logo_empresa()
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
-            func = session.query(Funcionario).filter(funcionario.cpf == cpf_funcionario).first()
-            print(f"Nome: {funcionario.nome} {funcionario.sobrenome}")
+            
+            
+
 
     
