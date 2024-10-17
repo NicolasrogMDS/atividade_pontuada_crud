@@ -19,7 +19,6 @@ class Funcionario(Base):
     __tablename__ = "funcionarios"
     
     #Definindo variaveis da tabela:
-    id = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String)
     sobrenome = Column(String)
     idade = Column(Integer)
@@ -31,7 +30,7 @@ class Funcionario(Base):
     sexo = Column(String)
 
     #Definindo atributos da classe:
-    def __init__(self,nome:str, sobrenome:str,idade:int, cpf:str, setor:str,funcao:str,salario:str,telefone:str,sexo:str):
+    def __init__(self,nome:str, sobrenome:str,idade:int, cpf:str, setor:str,funcao:str,salario:float,telefone:str,sexo:str):
         self.nome = nome
         self.sobrenome=sobrenome
         self.idadade = idade                                                                                            
@@ -44,4 +43,39 @@ class Funcionario(Base):
 
 #Criando tabela de dados, no banco de dados:
 Base.metadata.create_all(bind=BD)
+
+while True:
+    while True:
+        print("""   === RH System ===
+        1 - Adicionar um funcionário
+        2 - Consultar um funcionário
+        3 - Atualizar os dados de um funcionário
+        4 - Excluir um funcionário
+        5 - Listar todos os funcionários
+        0 - Sair do sistema.
+        """)
+        opcao = int(input(": "))
+        if opcao == 1 or 2 or 3 or 4 or 5 or 0:
+            break
+    match (opcao):
+        case 1:
+            while True:
+                funcionario = Funcionario(
+                    nome = input("Nome: "),
+                    sobre = input("Sobrenome: "),
+                    idade = int(input("Idade: ")),
+                    cpf = input("CPF: "),
+                    setor = input("Setor: "),
+                    funcao = input("Função: "),
+                    salario = float("Salario: "),
+                    telefone = input("Tel: "),
+                    sexo = ("Sexo (M/F ): ")
+                )
+                session.add(funcionario)
+                session.commit
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 0:
     
