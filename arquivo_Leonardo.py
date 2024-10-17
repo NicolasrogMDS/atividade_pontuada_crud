@@ -73,6 +73,9 @@ while True:
                 )
                 session.add(funcionario)
                 session.commit
+                opcao1 = int(input("Deseja adicionar outro funcionario ? \n1- Sim\n2- Não"))
+                if opcao1 == 2:
+                    break
         case 2:
         case 3:
         case 4:
