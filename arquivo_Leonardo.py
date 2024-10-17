@@ -75,6 +75,8 @@ def add_funcionario():
                     telefone = input("Insira o telefone: "),
                     sexo = input("Insira o sexo (M/F ): ")
                 )
+    session.add(funcionario)
+    session.commit
     return funcionario
 
 while True:
@@ -89,8 +91,6 @@ while True:
                 limpar_tela()
                 logo_empresa()
                 funcionario = add_funcionario()
-                session.add(funcionario)
-                session.commit
                 opcao1 = int(input("Deseja adicionar outro funcionario ? \n1- Sim\n2- Não"))
                 if opcao1 == 2:
                     break
