@@ -46,12 +46,12 @@ Base.metadata.create_all(bind=BD)
 
 def menu_principal ():
     print("""   === RH System ===
-        1 - Adicionar um funcionário
-        2 - Consultar um funcionário
-        3 - Atualizar os dados de um funcionário
-        4 - Excluir um funcionário
-        5 - Listar todos os funcionários
-        0 - Sair do sistema.
+1 - Adicionar um funcionário
+2 - Consultar um funcionário
+3 - Atualizar os dados de um funcionário
+4 - Excluir um funcionário
+5 - Listar todos os funcionários
+0 - Sair do sistema.
         """)
 
 def limpar_tela():
@@ -92,9 +92,18 @@ def pesquisa_funcionario(usuario_id):
     funcionario.sexo
     return funcionario.nome,funcionario.sobrenome,funcionario.idade,funcionario.cpf,funcionario.setor,funcionario.funcao,funcionario.salario,funcionario.telefone,funcionario.sexo
 
-
-
-
+def atualizando_dados (usuario_id,opcao2):
+    funcionario = session.query(Funcionario).filter(Funcionario.cpf == usuario_id).first()
+    funcionario.nome = input("Nome: ")
+    funcionario.sobrenome = input("Sobrenome: ")
+    funcionario.idade = int(input("Idade: "))
+    funcionario.cpf = input("CPF: ")
+    funcionario.setor = input("Setor: ")
+    funcionario.funcao = input("Função: ")
+    funcionario.salario = float(input("Salario: "))
+    funcionario.telefone = input("Telefone: ")
+    funcionario.sexo = input("Sexo: ")    
+    session.commit()
 
 while True:
     while True:
@@ -125,7 +134,27 @@ while True:
             print(f"Telefone: {telefone}")
             print(f"Sexo: {sexo}")
         case 3:
-            print("leo")
+            while True:
+                while True:
+                    print("""Quais dados deseja atualizar
+1 - Nome
+2 - Idade
+3 - CPF
+4 - Setor
+5 - Função
+6 - Salário
+7 - Telefone
+8 - Sexo""")
+                    opcao2 = int(input(": "))
+                    if opcao2 == 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8:
+                        break
+                cpf_funcionario = input("\nInforme o CPF do funcionario desejado: ")
+                atualizando_dados(cpf_funcionario,opcao2)
+                
+
+
+
+
             
             
 
