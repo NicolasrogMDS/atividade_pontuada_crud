@@ -61,15 +61,15 @@ while True:
         case 1:
             while True:
                 funcionario = Funcionario(
-                    nome = input("Nome: "),
-                    sobre = input("Sobrenome: "),
-                    idade = int(input("Idade: ")),
-                    cpf = input("CPF: "),
-                    setor = input("Setor: "),
-                    funcao = input("Função: "),
-                    salario = float("Salario: "),
-                    telefone = input("Tel: "),
-                    sexo = ("Sexo (M/F ): ")
+                    nome = input("Insira o nome: "),
+                    sobre = input("Insira o sobrenome: "),
+                    idade = int(input("Insira a idade: ")),
+                    cpf = input("Insira o CPF: "),
+                    setor = input("Insira o setor: "),
+                    funcao = input("Insira a função: "),
+                    salario = float("Insira o salário: "),
+                    telefone = input("Insira o telefone: "),
+                    sexo = ("Insira o sexo (M/F ): ")
                 )
                 session.add(funcionario)
                 session.commit

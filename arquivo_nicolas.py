@@ -1,6 +1,5 @@
 from os import system
 
-
 print("""   === RH System ===
 1 - Adicionar um funcionário
 2 - Consultar um funcionário
