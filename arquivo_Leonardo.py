@@ -93,6 +93,7 @@ while True:
         case 2:
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
             funcionario = session.query(Funcionario).filter(funcionario.cpf == cpf_funcionario).first()
+            print(f"Nome: {funcionario.nome} {funcionario.sobrenome}")
             
 
         case 3:
