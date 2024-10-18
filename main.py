@@ -74,7 +74,7 @@ def add_funcionario():
                     funcao = input("Insira a função: "),
                     salario = float(input("Insira o salário: ")),
                     telefone = input("Insira o telefone: "),
-                    sexo = input("Insira o sexo (M/F ): ")
+                    sexo = input("Insira o sexo (M/F ): ").upper()
                 )
     session.add(funcionario)
     session.commit
@@ -93,7 +93,7 @@ def pesquisa_funcionario(usuario_id):
     funcionario.sexo
     return funcionario.nome,funcionario.sobrenome,funcionario.idade,funcionario.cpf,funcionario.setor,funcionario.funcao,funcionario.salario,funcionario.telefone,funcionario.sexo
 
-def atualizando_dados (usuario_id,opcao2):
+def atualizar_dados (usuario_id,opcao2):
     funcionario = session.query(Funcionario).filter(Funcionario.cpf == usuario_id).first()
     match(opcao2):
         case 1:
@@ -112,7 +112,7 @@ def atualizando_dados (usuario_id,opcao2):
         case 7:
             funcionario.telefone = input("Telefone: ")
         case 8:
-            funcionario.sexo = input("Sexo: ")    
+            funcionario.sexo = input("Sexo: ").upper()    
     session.commit()
 
 def excluir_um_funcionario():
@@ -121,7 +121,7 @@ def excluir_um_funcionario():
     funcionario = session.query(Funcionario).filter_by(cpf = cpf_funcionario).first()
     session.delete(funcionario)
     session.commit()
-
+    
 def listar_todos_funcionarios():
     lista_funcionarios = session.query(Funcionario).all()
     for funcionario in lista_funcionarios:
@@ -143,7 +143,7 @@ while True:
                 limpar_tela()
                 logo_empresa()
                 funcionario = add_funcionario()
-                opcao1 = int(input("Deseja adicionar outro funcionário? \n1- Sim\n2- Não\nInsira a opção desejada:"))
+                opcao1 = int(input("Deseja adicionar outro funcionario ? \n1- Sim\n2- Não \nInsira a opção desejada: "))
                 if opcao1 == 2:
                     break
         case 2:
@@ -161,10 +161,9 @@ while True:
             print(f"Sexo: {sexo}")
             sleep(5)
         case 3:
-            limpar_tela()
             while True:
                 while True:
-                    print("""Quais dados deseja atualizar?
+                    print("""Quais dados deseja atualizar
 1 - Nome
 2 - Idade
 3 - CPF
@@ -176,15 +175,12 @@ while True:
                     opcao2 = int(input("Insira a opção desejada: "))
                     if opcao2 == 1 or 2 or 3 or 4 or 5 or 6 or 7 or 8:
                         break
-                    else:
-                        print("Opção inválida. Por favor, tente novamente.")
-                        sleep(1)
                 cpf_funcionario = input("\nInforme o CPF do funcionario desejado: ")
-                atualizando_dados(cpf_funcionario,opcao2)
-                opcao3 = input("Você deseja alterar algum outro dado? \n1 - Sim \n2 - Não \nInsira a opção desejada:")
+                atualizar_dados(cpf_funcionario,opcao2)
+                opcao3 = input("Deseja atualizar outro dado? \n1 - Sim \n2 - Não \nInsira a opção desejada: ")
                 if opcao3 == "2":
                     break
-                else:
+                elif opcao3 == "1":
                     limpar_tela()
         case 4:
             limpar_tela()
