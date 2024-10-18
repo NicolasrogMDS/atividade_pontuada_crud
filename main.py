@@ -4,6 +4,8 @@ from os import system
 from time import sleep
 system("cls||clear")
 
+#Alunos: Leonardo Machado, Nicolas Rogger
+
 dados = []
 #Criando Banco de dados:
 BD = create_engine("sqlite:///sistema_rh.db")
@@ -77,7 +79,7 @@ def add_funcionario():
                     sexo = input("Insira o sexo (M/F ): ").upper()
                 )
     session.add(funcionario)
-    session.commit
+    session.commit()
     return funcionario
 
 def pesquisa_funcionario(usuario_id):
@@ -126,7 +128,7 @@ def listar_todos_funcionarios():
     lista_funcionarios = session.query(Funcionario).all()
     for funcionario in lista_funcionarios:
         print(f"\nNome: {funcionario.nome} {funcionario.sobrenome} | Idade: {funcionario.idade} | CPF: {funcionario.cpf}")
-        print(f"Setor: {funcionario.setor} | Função: {funcionario.funcao} | Salário: {funcionario.salario} | Telefone: {funcionario.telefone} | Sexo: {funcionario.sexo}")
+        print(f"Setor: {funcionario.setor} | Função: {funcionario.funcao} | Salário: {funcionario.salario} R$ | Telefone: {funcionario.telefone} | Sexo: {funcionario.sexo}")
 
 
 while True:
@@ -150,13 +152,15 @@ while True:
             limpar_tela()
             logo_empresa()
             cpf_funcionario = input("Informe o CPF do funcionario desejado: ")
+            limpar_tela()
+            logo_empresa()
             nome, sobrenome, idade, cpf, setor, funcao, salario, telefone, sexo = pesquisa_funcionario(cpf_funcionario)
             print(f"Nome: {nome} {sobrenome}")
             print(f"Idade: {idade}")
             print(f"CPF: {cpf}")
             print(f"Setor: {setor}")
             print(f"Função: {funcao}")
-            print(f"Salario: {salario}")
+            print(f"Salario: {salario} R$")
             print(f"Telefone: {telefone}")
             print(f"Sexo: {sexo}")
             sleep(5)
@@ -192,7 +196,7 @@ while True:
             limpar_tela()
             print("\nTodos os funcionários:")
             listar_todos_funcionarios()
-            sleep(10)
+            sleep(5)
         case 0:
             print("Saiu do sistema com sucesso.")
             sleep(1)
