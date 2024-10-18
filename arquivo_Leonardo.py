@@ -94,15 +94,24 @@ def pesquisa_funcionario(usuario_id):
 
 def atualizando_dados (usuario_id,opcao2):
     funcionario = session.query(Funcionario).filter(Funcionario.cpf == usuario_id).first()
-    funcionario.nome = input("Nome: ")
-    funcionario.sobrenome = input("Sobrenome: ")
-    funcionario.idade = int(input("Idade: "))
-    funcionario.cpf = input("CPF: ")
-    funcionario.setor = input("Setor: ")
-    funcionario.funcao = input("Função: ")
-    funcionario.salario = float(input("Salario: "))
-    funcionario.telefone = input("Telefone: ")
-    funcionario.sexo = input("Sexo: ")    
+    match(opcao2):
+        case 1:
+            funcionario.nome = input("Nome: ")
+            funcionario.sobrenome = input("Sobrenome: ")
+        case 2:
+            funcionario.idade = int(input("Idade: "))
+        case 3:
+            funcionario.cpf = input("CPF: ")
+        case 4:
+            funcionario.setor = input("Setor: ")
+        case 5:
+            funcionario.funcao = input("Função: ")
+        case 6:
+            funcionario.salario = float(input("Salario: "))
+        case 7:
+            funcionario.telefone = input("Telefone: ")
+        case 8:
+            funcionario.sexo = input("Sexo: ")    
     session.commit()
 
 while True:
@@ -150,13 +159,4 @@ while True:
                         break
                 cpf_funcionario = input("\nInforme o CPF do funcionario desejado: ")
                 atualizando_dados(cpf_funcionario,opcao2)
-                
-
-
-
-
-            
-            
-
-
-    
+                break
