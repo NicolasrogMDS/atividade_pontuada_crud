@@ -1,10 +1,17 @@
+"""
+Turma - 93313
+
+Nome completo dos componentes:
+1 - Nicolas Roger Araujo Monteiro da Silva
+2 - Leonardo Machado
+"""
+
 from sqlalchemy import create_engine, Column, String, Integer, Float
 from sqlalchemy.orm import sessionmaker, declarative_base 
 from os import system
 from time import sleep
 system("cls||clear")
 
-#Alunos: Leonardo Machado, Nicolas Rogger
 
 dados = []
 #Criando Banco de dados:
